@@ -119,19 +119,33 @@
         placeholder="Enter a number"
       >
 
-      <button>Insert</button>
-      <button>Search</button>
-      <button>Delete</button>
+      <button onclick="insertValue()">
+        Insert
+      </button>
+
+      <button>
+        Search
+      </button>
+
+      <button>
+        Delete
+      </button>
 
       <h3>Stored Values</h3>
 
-      <div class="box">
+      <div
+        id="valuesBox"
+        class="box"
+      >
         No values inserted yet.
       </div>
 
       <h3>Output</h3>
 
-      <div class="log">
+      <div
+        id="log"
+        class="log"
+      >
         Ready...
       </div>
 
@@ -160,6 +174,45 @@
   </div>
 
 </div>
+
+<script>
+
+let data=[];
+
+function getValue(){
+
+  return Number(
+    document.getElementById("value").value
+  );
+
+}
+
+function insertValue(){
+
+  let v=getValue();
+
+  if(!data.includes(v)){
+
+    data.push(v);
+
+    document.getElementById("log").innerText=
+    `Inserted ${v}`;
+
+    document.getElementById("valuesBox").innerText=
+    data.join(", ");
+
+  }
+
+  else{
+
+    document.getElementById("log").innerText=
+    `${v} already exists`;
+
+  }
+
+}
+
+</script>
 
 </body>
 </html>
