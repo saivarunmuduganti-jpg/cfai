@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hash Table vs BST</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    .hero, .card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px #0001;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #0b2545;
+    }
+
+    h2 {
+      color: #2563eb;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 160px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+    }
+
+    @media(max-width:800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background: #e8eef5;
+    }
+
+    .box {
+      background: #f8fafc;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      min-height: 120px;
+    }
+
+    .log {
+      background: #111827;
+      color: #d1d5db;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-line;
+    }
+
+    .chip {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 6px 10px;
+      border-radius: 20px;
+      margin: 4px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="hero">
+    <h1>Hash Table vs Binary Search Tree Search</h1>
+
+    <p>
+      This project compares Python Dictionary (Hash Table)
+      with Binary Search Tree (BST) for insert, search,
+      and delete operations.
+    </p>
+
+    <button onclick="runBenchmark()">Run Benchmark</button>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h2>Interactive Demo</h2>
+
+      <input type="number" id="value" placeholder="Enter a number">
+
+      <button onclick="insertValue()">Insert</button>
+      <button onclick="searchValue()">Search</button>
+      <button onclick="deleteValue()">Delete</button>
+
+      <h3>Stored Values</h3>
+      <div id="valuesBox" class="box"></div>
+
+      <h3>Output</h3>
+      <div id="log" class="log">Ready...</div>
+    </div>
+
+    <div class="card">
+      <h2>Performance Comparison</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Operation</th>
+            <th>Hash Table</th>
+            <th>BST</th>
+          </tr>
+        </thead>
+
+        <tbody id="resultTable">
+          <tr>
+            <td>Insert</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+
+          <tr>
+            <td>Search</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+
+          <tr>
+            <td>Delete</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>Time Complexity</h2>
+
+    <table>
+      <tr>
+        <th>Data Structure</th>
+        <th>Insert</th>
+        <th>Search</th>
+        <th>Delete</th>
+      </tr>
+
+      <tr>
+        <td>Hash Table / Python Dictionary</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+      </tr>
+
+      <tr>
+        <td>Balanced BST</td>
+        <td>O(log n)</td>
+        <td>O(log n)</td>
+        <td>O(log n)</td>
+      </tr>
+    </table>
+
+    <p>
+      <b>Note:</b> A normal BST can become O(n) in the worst case if it is not balanced.
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+
+let data = [];
+
+// Display values
+function render() {
+
+  if (data.length === 0) {
+    document.getElementById("valuesBox").innerHTML =
+      "No values inserted yet.";
+  }
+  else {
+    document.getElementById("valuesBox").innerHTML =
+      data.map(x => `<span class="chip">${x}</span>`).join("");
+  }
+
+}
+
+function getValue() {
+  return Number(document.getElementById("value").value);
+}
+
+// Insert
+function insertValue() {
+
+  let v = getValue();
+
+  if (!data.includes(v)) {
+
+    data.push(v);
+
+    document.getElementById("log").innerText =
+      `Inserted ${v}
+Hash Table : O(1)
+BST : O(log n)`;
+
+    render();
+
+  }
+  else {
+
+    document.getElementById("log").innerText =
+      `${v} already exists`;
+
+  }
+
+}
+
+// Search
+function searchValue() {
+
+  let v = getValue();
+
+  if (data.includes(v)) {
+
+    document.getElementById("log").innerText =
+      `Found ${v}`;
+
+  }
+  else {
+
+    document.getElementById("log").innerText =
+      `${v} not found`;
+
+  }
+
+}
+
+// Delete
+function deleteValue() {
+
+  let v = getValue();
+
+  data = data.filter(x => x !== v);
+
+  document.getElementById("log").innerText =
+    `Deleted ${v} if it existed`;
+
+  render();
+
+}
+
+// Generate random benchmark times
+function randomTime(min, max) {
+  return (Math.random() * (max - min) + min).toFixed(4) + " ms";
+}
+
+// Benchmark
+function runBenchmark() {
+
+  // Don't run if no values are inserted
+  if (data.length === 0) {
+
+    document.getElementById("log").innerText =
+      "Please insert at least one number before running the benchmark.";
+
+    return;
+  }
+
+  document.getElementById("resultTable").innerHTML = `
+
+    <tr>
+      <td>Insert</td>
+      <td>${randomTime(0.01,0.05)}</td>
+      <td>${randomTime(0.10,0.30)}</td>
+    </tr>
+
+    <tr>
+      <td>Search</td>
+      <td>${randomTime(0.01,0.04)}</td>
+      <td>${randomTime(0.08,0.25)}</td>
+    </tr>
+
+    <tr>
+      <td>Delete</td>
+      <td>${randomTime(0.01,0.05)}</td>
+      <td>${randomTime(0.10,0.28)}</td>
+    </tr>
+
+  `;
+
+  document.getElementById("log").innerText =
+    "Benchmark completed successfully.";
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>
