@@ -5,60 +5,83 @@
 
   <style>
 
-    body {
-      font-family: Arial;
-      margin: 0;
-      background: #f4f7fb;
-      color: #172033;
+    body{
+      font-family:Arial;
+      margin:0;
+      background:#f4f7fb;
+      color:#172033;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 30px;
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:30px;
     }
 
-    .hero,
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 8px 25px #0001;
-      margin-bottom: 20px;
+    .hero,.card{
+      background:white;
+      padding:25px;
+      border-radius:10px;
+      box-shadow:0 8px 25px #0001;
+      margin-bottom:20px;
     }
 
-    h1 {
-      color: #0b2545;
+    h1{
+      color:#0b2545;
     }
 
-    h2 {
-      color: #2563eb;
+    h2{
+      color:#2563eb;
     }
 
-    button {
-      background: #2563eb;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
+    button{
+      background:#2563eb;
+      color:white;
+      border:none;
+      padding:10px 16px;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:bold;
+      margin-right:5px;
     }
 
-    button:hover {
-      background: #1d4ed8;
+    button:hover{
+      background:#1d4ed8;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+    input{
+      padding:10px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      width:160px;
     }
 
-    @media (max-width: 800px) {
-      .grid {
-        grid-template-columns: 1fr;
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    @media(max-width:800px){
+      .grid{
+        grid-template-columns:1fr;
       }
+    }
+
+    .box{
+      background:#f8fafc;
+      border:1px solid #ddd;
+      padding:15px;
+      border-radius:8px;
+      min-height:120px;
+    }
+
+    .log{
+      background:#111827;
+      color:#d1d5db;
+      padding:15px;
+      border-radius:8px;
+      white-space:pre-line;
     }
 
   </style>
@@ -87,19 +110,41 @@
   <div class="grid">
 
     <div class="card">
+
       <h2>Interactive Demo</h2>
 
-      <p>
-        Input operations will be added in the next commit.
-      </p>
+      <input
+        type="number"
+        id="value"
+        placeholder="Enter a number"
+      >
+
+      <button>Insert</button>
+      <button>Search</button>
+      <button>Delete</button>
+
+      <h3>Stored Values</h3>
+
+      <div class="box">
+        No values inserted yet.
+      </div>
+
+      <h3>Output</h3>
+
+      <div class="log">
+        Ready...
+      </div>
+
     </div>
 
     <div class="card">
+
       <h2>Performance Comparison</h2>
 
       <p>
-        Benchmark table will be added later.
+        Benchmark results will appear here.
       </p>
+
     </div>
 
   </div>
@@ -109,7 +154,7 @@
     <h2>Time Complexity</h2>
 
     <p>
-      Complexity information will be added later.
+      Complexity analysis will be added later.
     </p>
 
   </div>
