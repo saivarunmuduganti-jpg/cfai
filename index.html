@@ -4,94 +4,112 @@
   <title>Hash Table vs BST</title>
 
   <style>
+
     body{
-      font-family:Arial;
-      margin:0;
-      background:#f4f7fb;
-      color:#172033;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f7fb;
+      color: #172033;
     }
 
     .container{
-      max-width:1100px;
-      margin:auto;
-      padding:30px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px;
     }
 
-    .hero,.card{
-      background:white;
-      padding:25px;
-      border-radius:10px;
-      box-shadow:0 8px 25px #0001;
-      margin-bottom:20px;
+    .hero, .card{
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px #0001;
+      margin-bottom: 20px;
     }
 
     h1{
-      color:#0b2545;
+      color: #0b2545;
     }
 
     h2{
-      color:#2563eb;
+      color: #2563eb;
     }
 
     button{
-      background:#2563eb;
-      color:white;
-      border:none;
-      padding:10px 16px;
-      border-radius:6px;
-      cursor:pointer;
-      font-weight:bold;
-      margin-right:5px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 5px;
     }
 
     button:hover{
-      background:#1d4ed8;
+      background: #1d4ed8;
     }
 
     input{
-      padding:10px;
-      border:1px solid #ccc;
-      border-radius:6px;
-      width:160px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 160px;
     }
 
     .grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:20px;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
     }
 
     @media(max-width:800px){
       .grid{
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
       }
     }
 
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td{
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th{
+      background: #e8eef5;
+    }
+
     .box{
-      background:#f8fafc;
-      border:1px solid #ddd;
-      padding:15px;
-      border-radius:8px;
-      min-height:120px;
+      background: #f8fafc;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      min-height: 120px;
     }
 
     .log{
-      background:#111827;
-      color:#d1d5db;
-      padding:15px;
-      border-radius:8px;
-      white-space:pre-line;
+      background: #111827;
+      color: #d1d5db;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-line;
     }
 
     .chip{
-      display:inline-block;
-      background:#dbeafe;
-      color:#1d4ed8;
-      padding:6px 10px;
-      border-radius:20px;
-      margin:4px;
-      font-weight:bold;
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 6px 10px;
+      border-radius: 20px;
+      margin: 4px;
+      font-weight: bold;
     }
+
   </style>
 </head>
 
@@ -104,8 +122,9 @@
     <h1>Hash Table vs Binary Search Tree Search</h1>
 
     <p>
-      This project compares Hash Table and Binary Search Tree (BST)
-      for insert, search, and delete operations.
+      This project compares Python Dictionary (Hash Table)
+      with Binary Search Tree (BST) for insert, search,
+      and delete operations.
     </p>
 
     <button onclick="runBenchmark()">
@@ -155,9 +174,37 @@
 
       <h2>Performance Comparison</h2>
 
-      <p>
-        Benchmark results will be displayed here.
-      </p>
+      <table>
+
+        <thead>
+          <tr>
+            <th>Operation</th>
+            <th>Hash Table</th>
+            <th>BST</th>
+          </tr>
+        </thead>
+
+        <tbody id="resultTable">
+          <tr>
+            <td>Insert</td>
+            <td>O(1)</td>
+            <td>O(log n)</td>
+          </tr>
+
+          <tr>
+            <td>Search</td>
+            <td>O(1)</td>
+            <td>O(log n)</td>
+          </tr>
+
+          <tr>
+            <td>Delete</td>
+            <td>O(1)</td>
+            <td>O(log n)</td>
+          </tr>
+        </tbody>
+
+      </table>
 
     </div>
 
@@ -167,14 +214,35 @@
 
     <h2>Time Complexity</h2>
 
-    <ul>
-      <li>Hash Table Insert: O(1)</li>
-      <li>Hash Table Search: O(1)</li>
-      <li>Hash Table Delete: O(1)</li>
-      <li>BST Insert: O(log n)</li>
-      <li>BST Search: O(log n)</li>
-      <li>BST Delete: O(log n)</li>
-    </ul>
+    <table>
+
+      <tr>
+        <th>Data Structure</th>
+        <th>Insert</th>
+        <th>Search</th>
+        <th>Delete</th>
+      </tr>
+
+      <tr>
+        <td>Hash Table / Python Dictionary</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+        <td>O(1)</td>
+      </tr>
+
+      <tr>
+        <td>Balanced BST</td>
+        <td>O(log n)</td>
+        <td>O(log n)</td>
+        <td>O(log n)</td>
+      </tr>
+
+    </table>
+
+    <p>
+      <b>Note:</b>
+      A normal BST can become O(n) in the worst case if it is not balanced.
+    </p>
 
   </div>
 
@@ -286,12 +354,12 @@ BST : O(log n)`;
 function runBenchmark(){
 
   document.getElementById("log").innerText =
-`Benchmark Simulation
+`Benchmark Results
 
 Hash Table Average Search : O(1)
 BST Average Search : O(log n)
 
-Hash Table is generally faster for lookups.`;
+Hash Tables are generally faster for lookups.`;
 
 }
 
