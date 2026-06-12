@@ -260,8 +260,8 @@ function render(){
 
         document.getElementById("valuesBox").innerHTML =
         data.map(
-            x => `<span class="chip">${x}</span>`
-        ).join("");
+    x => <span class="chip">${x}</span>
+).join("");
 
     }
 
