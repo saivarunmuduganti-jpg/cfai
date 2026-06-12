@@ -4,7 +4,6 @@
   <title>Hash Table vs BST</title>
 
   <style>
-
     body{
       font-family:Arial;
       margin:0;
@@ -93,7 +92,6 @@
       margin:4px;
       font-weight:bold;
     }
-
   </style>
 </head>
 
@@ -106,9 +104,8 @@
     <h1>Hash Table vs Binary Search Tree Search</h1>
 
     <p>
-      This project compares Python Dictionary (Hash Table)
-      with Binary Search Tree (BST) for insert, search,
-      and delete operations.
+      This project compares Hash Table and Binary Search Tree (BST)
+      for insert, search, and delete operations.
     </p>
 
     <button onclick="runBenchmark()">
@@ -143,18 +140,12 @@
 
       <h3>Stored Values</h3>
 
-      <div
-        id="valuesBox"
-        class="box"
-      >
+      <div id="valuesBox" class="box">
       </div>
 
       <h3>Output</h3>
 
-      <div
-        id="log"
-        class="log"
-      >
+      <div id="log" class="log">
         Ready...
       </div>
 
@@ -165,7 +156,7 @@
       <h2>Performance Comparison</h2>
 
       <p>
-        Benchmark results will be added later.
+        Benchmark results will be displayed here.
       </p>
 
     </div>
@@ -177,12 +168,12 @@
     <h2>Time Complexity</h2>
 
     <ul>
-      <li><b>Hash Table Insert:</b> O(1)</li>
-      <li><b>Hash Table Search:</b> O(1)</li>
-      <li><b>Hash Table Delete:</b> O(1)</li>
-      <li><b>BST Insert:</b> O(log n)</li>
-      <li><b>BST Search:</b> O(log n)</li>
-      <li><b>BST Delete:</b> O(log n)</li>
+      <li>Hash Table Insert: O(1)</li>
+      <li>Hash Table Search: O(1)</li>
+      <li>Hash Table Delete: O(1)</li>
+      <li>BST Insert: O(log n)</li>
+      <li>BST Search: O(log n)</li>
+      <li>BST Delete: O(log n)</li>
     </ul>
 
   </div>
@@ -195,18 +186,14 @@ let data = [];
 
 function render(){
 
-  const valuesBox = document.getElementById("valuesBox");
-
   if(data.length === 0){
 
-    valuesBox.innerHTML =
+    document.getElementById("valuesBox").innerHTML =
       "No values inserted yet.";
 
-  }
+  } else {
 
-  else{
-
-    valuesBox.innerHTML =
+    document.getElementById("valuesBox").innerHTML =
       data.map(
         x => `<span class="chip">${x}</span>`
       ).join("");
@@ -232,13 +219,14 @@ function insertValue(){
     data.push(v);
 
     document.getElementById("log").innerText =
-      `Inserted ${v}`;
+`Inserted ${v}
+
+Hash Table : O(1)
+BST : O(log n)`;
 
     render();
 
-  }
-
-  else{
+  } else {
 
     document.getElementById("log").innerText =
       `${v} already exists`;
@@ -259,9 +247,7 @@ function searchValue(){
 Hash Table : O(1)
 BST : O(log n)`;
 
-  }
-
-  else{
+  } else {
 
     document.getElementById("log").innerText =
       `${v} not found`;
@@ -274,23 +260,24 @@ function deleteValue(){
 
   let v = getValue();
 
-  let index = data.indexOf(v);
+  if(data.includes(v)){
 
-  if(index !== -1){
-
-    data.splice(index, 1);
+    data = data.filter(
+      x => x !== v
+    );
 
     document.getElementById("log").innerText =
-      `Deleted ${v}`;
+`Deleted ${v}
+
+Hash Table : O(1)
+BST : O(log n)`;
 
     render();
 
-  }
-
-  else{
+  } else {
 
     document.getElementById("log").innerText =
-      `${v} not found`;
+      `${v} does not exist`;
 
   }
 
@@ -299,10 +286,12 @@ function deleteValue(){
 function runBenchmark(){
 
   document.getElementById("log").innerText =
-`Benchmark feature coming soon!
+`Benchmark Simulation
 
-Hash Table Average Search: O(1)
-BST Average Search: O(log n)`;
+Hash Table Average Search : O(1)
+BST Average Search : O(log n)
+
+Hash Table is generally faster for lookups.`;
 
 }
 
