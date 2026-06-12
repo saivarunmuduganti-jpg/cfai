@@ -248,24 +248,31 @@ th{
 <script>
 
 let data = [];
-
 function render(){
+
+    let valuesBox = document.getElementById("valuesBox");
 
     if(data.length === 0){
 
-        document.getElementById("valuesBox").innerHTML =
+        valuesBox.innerHTML =
         "No values inserted yet.";
 
-    }else{
+    }
+    else{
 
-        document.getElementById("valuesBox").innerHTML =
+        valuesBox.innerHTML =
         data.map(
-    x => <span class="chip">${x}</span>
-).join("");
+            x => <span class="chip">${x}</span>
+        ).join("");
 
     }
 
 }
+
+
+    
+
+
 
 function getValue(){
 
