@@ -111,7 +111,7 @@
       and delete operations.
     </p>
 
-    <button>
+    <button onclick="runBenchmark()">
       Run Benchmark
     </button>
 
@@ -133,11 +133,11 @@
         Insert
       </button>
 
-      <button>
+      <button onclick="searchValue()">
         Search
       </button>
 
-      <button>
+      <button onclick="deleteValue()">
         Delete
       </button>
 
@@ -165,7 +165,7 @@
       <h2>Performance Comparison</h2>
 
       <p>
-        Benchmark results will appear here.
+        Benchmark results will be added later.
       </p>
 
     </div>
@@ -176,9 +176,14 @@
 
     <h2>Time Complexity</h2>
 
-    <p>
-      Complexity analysis will be added later.
-    </p>
+    <ul>
+      <li><b>Hash Table Insert:</b> O(1)</li>
+      <li><b>Hash Table Search:</b> O(1)</li>
+      <li><b>Hash Table Delete:</b> O(1)</li>
+      <li><b>BST Insert:</b> O(log n)</li>
+      <li><b>BST Search:</b> O(log n)</li>
+      <li><b>BST Delete:</b> O(log n)</li>
+    </ul>
 
   </div>
 
@@ -186,23 +191,25 @@
 
 <script>
 
-let data=[];
+let data = [];
 
 function render(){
 
-  if(data.length===0){
+  const valuesBox = document.getElementById("valuesBox");
 
-    document.getElementById("valuesBox").innerHTML=
-    "No values inserted yet.";
+  if(data.length === 0){
+
+    valuesBox.innerHTML =
+      "No values inserted yet.";
 
   }
 
   else{
 
-    document.getElementById("valuesBox").innerHTML=
-    data.map(
-      x=>`<span class="chip">${x}</span>`
-    ).join("");
+    valuesBox.innerHTML =
+      data.map(
+        x => `<span class="chip">${x}</span>`
+      ).join("");
 
   }
 
@@ -218,14 +225,14 @@ function getValue(){
 
 function insertValue(){
 
-  let v=getValue();
+  let v = getValue();
 
   if(!data.includes(v)){
 
     data.push(v);
 
-    document.getElementById("log").innerText=
-    `Inserted ${v}`;
+    document.getElementById("log").innerText =
+      `Inserted ${v}`;
 
     render();
 
@@ -233,10 +240,69 @@ function insertValue(){
 
   else{
 
-    document.getElementById("log").innerText=
-    `${v} already exists`;
+    document.getElementById("log").innerText =
+      `${v} already exists`;
 
   }
+
+}
+
+function searchValue(){
+
+  let v = getValue();
+
+  if(data.includes(v)){
+
+    document.getElementById("log").innerText =
+`Found ${v}
+
+Hash Table : O(1)
+BST : O(log n)`;
+
+  }
+
+  else{
+
+    document.getElementById("log").innerText =
+      `${v} not found`;
+
+  }
+
+}
+
+function deleteValue(){
+
+  let v = getValue();
+
+  let index = data.indexOf(v);
+
+  if(index !== -1){
+
+    data.splice(index, 1);
+
+    document.getElementById("log").innerText =
+      `Deleted ${v}`;
+
+    render();
+
+  }
+
+  else{
+
+    document.getElementById("log").innerText =
+      `${v} not found`;
+
+  }
+
+}
+
+function runBenchmark(){
+
+  document.getElementById("log").innerText =
+`Benchmark feature coming soon!
+
+Hash Table Average Search: O(1)
+BST Average Search: O(log n)`;
 
 }
 
